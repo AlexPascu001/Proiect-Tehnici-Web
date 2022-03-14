@@ -1,0 +1,141 @@
+#cont_linkuri a {
+	padding: 0.25em;
+	display: flex;
+	height: 30px;
+	width: 100px;
+	border-left-width: 5px;
+	background: var(--navy);
+	text-decoration: none;
+	text-align: center;
+	color: white;
+	line-height: 30px;
+	transition: all 1s linear;
+}
+#cont_linkuri a:hover {
+	background-color: var(--roz);
+	color:white;
+}
+#cont_iframe {
+	display: flex;
+}
+#iframe1, #cont_linkuri a {
+	border: 0.2em solid var(--alb);
+}
+h1, h2 {
+	color: var(--navy);
+}
+h1 {
+	text-align: center;
+}
+#tabel_detalii {
+	width: 80%;
+}
+#tabel_detalii, th, td, caption {
+	text-align: center;
+	border-collapse: collapse;
+	text-shadow: 0.1em 0.1em 0.1em var(--navy);
+}
+#tabel_detalii {
+	caption-side: bottom;
+}
+#tabel_detalii td, th {
+	border: 2px solid navy;
+}
+#tabel_detalii td:nth-child(odd), th:nth-child(odd) {
+	border-right-color: var(--mov);
+	border-left-color: var(--roz);
+}
+#tabel_detalii td:nth-child(even), th:nth-child(even) {
+	border-right-color: var(--roz);
+	border-left-color: var(--mov);
+}
+#tabel_detalii td:last-child {
+	border-right-color: var(--roz);
+	border-left-color: var(--roz);
+}
+#tabel_detalii thead {
+	border-bottom: 3px solid navy;
+}
+#tabel_detalii tbody {
+	border-bottom: 3px solid navy;
+}
+#tabel_detalii tr:hover {
+	box-shadow: 0 0 5px 5px var(--mov);
+	transition: all 0.5s linear;
+}
+::cue {
+	background: var(--navy);
+}
+#loading {
+	font-size: 4em;
+}
+#watermark, #absolut {
+	display: none;
+}
+@media print {
+	#absolut{
+		position: absolute;
+		display: inline-block;
+		top:100%;
+		width:20px;
+		height:20px;
+		right:0;
+		overflow: visible;
+	}
+	#absolut::after{
+		content:"Element poziționat absolut pe a doua pagină.Pentru a vedea stilul de printare apăsați Ctrl+P.";
+		position: absolute;
+		font-size:10px;
+		color: red;
+		right:0;
+		border:5px double black;
+		width:200px;
+		height:35px;
+		display: inline-block;
+	}
+	html, body {
+		width: 210mm;
+		overflow:visible !important;
+	}
+	#watermark
+	{
+		display: block;
+		position: fixed;/*apare pe toate paginile*/
+		bottom:0;
+		color:rgba(0,0,0,0.4);
+		right:0;
+	}
+	#watermark::after{
+
+		opacity:0.4;
+		padding:5px;
+		display: block;
+		background: white;
+		border:2px solid black;
+		border-top-left-radius:10px;
+		border-bottom-left-radius:10px;
+		border-right:none;
+		color: red;
+		content:"Copyright Sneakerscape Inc.";
+	}
+
+	#end{
+		page-break-before: always;
+	}
+}
+@page {
+	size: A4 portrait;
+	margin-bottom:2cm;
+	margin-top:2cm;
+	counter-increment: page;
+
+}
+@page:left{
+	margin-left:2cm;
+	margin-right:1cm;
+	border-radius: 20cm;
+}
+@page:right{
+	margin-right:2cm;
+	margin-left:1cm;
+}

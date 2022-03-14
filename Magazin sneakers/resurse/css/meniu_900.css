@@ -1,0 +1,10 @@
+#casuta {
+    display: block;
+    vertical-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 45px;
+}
+#text {
+    display: none;
+}
