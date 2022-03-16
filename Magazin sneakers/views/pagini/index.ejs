@@ -4,7 +4,7 @@
 	<title>Sneakerscape</title>
 	<meta name="Keywords" content="adidasi, sneakers, incaltaminte, sneakers dama, sneakers barbati, reduceri incaltaminte, promotii incaltaminte, sneakers nike, sneakers adidas, sneakers puma">
 	<meta name="Description" content="Cel mai tare magazin de adidasi din Romania! Promotii zilnice si reduceri garantate!">
-	<%- include("../fragmente/head.ejs");%>
+	<%- include("../fragmente/head.ejs"); %>
 </head>
 <body>
 	<%- include("../fragmente/header.ejs"); %>
@@ -21,6 +21,18 @@
 			</div>
 		</section>
 		<section id="tabel">
+			<div id="galerie_statica">
+				<% for (let imagine of locals.imagini) { %>
+					<figure>
+						<picture>
+							<source srcset="<%- imagine.mic%>" media="(max-width:800px)"/>
+							<source srcset="<%- imagine.mediu%>" media="(max-width:1200px)"/>
+							<img src="<%- imagine.mare %>" alt="alternativ">
+						</picture>
+						<figcaption>Descriere</figcaption>
+					</figure>
+				<% } %>
+			</div>
 			<video width="320" height="240" controls="controls" poster="resurse/imagini/sneaker2.png" preload="auto">
 				<source src="/resurse/video/video.mov" type="video/mp4">
 				<source src="video.ogv" type="video/ogv">

@@ -48,9 +48,7 @@ nav ul.meniu li a, nav ul.meniu li div, nav ul.meniu li {
     width: 100%;
     /*outline: 0.1em solid white;*/
 }
-ul.meniu li ul li a{
 
-}
 nav ul.meniu>li>ul li {
     text-decoration: none;
     color: var(--turcoaz);
@@ -60,6 +58,7 @@ ul.meniu a:hover, ul.meniu div:hover, ul.meniu li ul li:hover {
     background:var(--turcoaz);
     color: var(--navy);
 }
+
 
 ul.meniu a, ul.meniu div, ul.meniu li ul li{
     transition: background 700ms linear;
@@ -105,6 +104,7 @@ ul.meniu li div.optiune:hover::before {
     top: 2.7rem;
     opacity: 1;
 }
+
 @keyframes aparitie_meniu{
     0%{
         opacity: 0;

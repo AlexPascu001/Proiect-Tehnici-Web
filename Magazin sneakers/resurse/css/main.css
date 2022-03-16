@@ -18,10 +18,7 @@ body {
     color: var(--alb) ;
 }
 main {
-    padding-left: 2em;
-    padding-right: 2em;
-    padding-top: 2em;
-    padding-bottom: 2em;
+    padding: 2em;
     display: grid;
     /*text-shadow: 0 0 0.1em black;*/
     grid-template-columns: repeat(4,1fr);
@@ -94,7 +91,7 @@ li>a {
     border-top-left-radius: 3rem;
     border-top-right-radius: 3rem;
     border:1px solid var(--navy);
-    box-shadow:0px 0px 7px 2px inset navy;
+    box-shadow:0 0 7px 2px inset navy;
     overflow:visible;
 }
 #link-top:hover {
@@ -121,4 +118,89 @@ li>a {
     #link-top, #top {
         display: none;
     }
+}
+#galerie_statica {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /*grid-gap: 0;*/
+}
+#galerie_statica img{
+    width: 100%;
+}
+#galerie_statica figure:nth-child(7){
+    grid-area: 3/2/4/3;
+}
+#cont_linkuri a {
+    padding: 0.25em;
+    display: flex;
+    height: 30px;
+    width: 100px;
+    border-left-width: 5px;
+    background: var(--navy);
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    line-height: 30px;
+    transition: all 1s linear;
+}
+#cont_linkuri a:hover {
+    background-color: var(--roz);
+    color:white;
+}
+#cont_iframe {
+    display: flex;
+}
+#iframe1, #cont_linkuri a {
+    border: 0.2em solid var(--alb);
+}
+h1, h2 {
+    color: var(--navy);
+}
+h1 {
+    text-align: center;
+}
+#tabel_detalii {
+    width: 80%;
+}
+#tabel_detalii, th, td, caption {
+    text-align: center;
+    border-collapse: collapse;
+    text-shadow: 0.1em 0.1em 0.1em var(--navy);
+}
+#tabel_detalii {
+    caption-side: bottom;
+}
+#tabel_detalii td, th {
+    border: 2px solid navy;
+}
+#tabel_detalii td:nth-child(odd), th:nth-child(odd) {
+    border-right-color: var(--mov);
+    border-left-color: var(--roz);
+}
+#tabel_detalii td:nth-child(even), th:nth-child(even) {
+    border-right-color: var(--roz);
+    border-left-color: var(--mov);
+}
+#tabel_detalii td:last-child {
+    border-right-color: var(--roz);
+    border-left-color: var(--roz);
+}
+#tabel_detalii thead {
+    border-bottom: 3px solid navy;
+}
+#tabel_detalii tbody {
+    border-bottom: 3px solid navy;
+}
+#tabel_detalii tr:hover {
+    box-shadow: 0 0 5px 5px var(--mov);
+    transition: all 0.5s linear;
+}
+::cue {
+    background: var(--navy);
+}
+#loading {
+    font-size: 4em;
+}
+#watermark, #absolut {
+    display: none;
 }
