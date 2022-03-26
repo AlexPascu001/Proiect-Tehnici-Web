@@ -11,28 +11,9 @@
 	<main>
 		<section id="main_page">
 			<h2 id="shop_now">Shop now</h2>
-			<div class="photo_reel">
-				<div class="photo">
-					<img src="/resurse/imagini/sneaker_mainpage.jpg" title="Sneakers" alt="Poza Sneakers" style="width: 100%">
-				</div>
-				<div class="photo">
-					<img src="/resurse/imagini/sneaker_mainpage2.jpg" width="50%" title="Sneakers" alt="Alta poza Sneakers" style="width: 100%">
-				</div>
-			</div>
+			<%- include("../fragmente/galerie.ejs"); %>
 		</section>
 		<section id="tabel">
-			<div id="galerie_statica">
-				<% for (let imagine of locals.imagini) { %>
-					<figure>
-						<picture>
-							<source srcset="<%- imagine.mic%>" media="(max-width:800px)"/>
-							<source srcset="<%- imagine.mediu%>" media="(max-width:1200px)"/>
-							<img src="<%- imagine.mare %>" alt="alternativ">
-						</picture>
-						<figcaption>Descriere</figcaption>
-					</figure>
-				<% } %>
-			</div>
 			<video width="320" height="240" controls="controls" poster="resurse/imagini/sneaker2.png" preload="auto">
 				<source src="/resurse/video/video.mov" type="video/mp4">
 				<source src="video.ogv" type="video/ogv">

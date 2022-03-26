@@ -27,6 +27,7 @@
         text-decoration: none;
     }
     nav {
+        position: unset;
         display: flex;
         page-break-after: always;
         justify-content: center;

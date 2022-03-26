@@ -2,32 +2,70 @@
 	"cale_galerie":"resurse/imagini/galerie",
 	"imagini": [
 		{
-			"fisier":"briose-frisca.png",
-			"descriere":"Brioșe"
+			"cale_imagine":"sneaker1.jpg",
+			"titlu":"Sneaker 1",
+			"descriere":"Blue/Orange Nike x Off-White AF1",
+			"timp":"13:00-16:00"
 		},
 		{
-			"fisier":"clatite.png",
-			"descriere":"Clătite cu dulceață"
+			"cale_imagine":"sneaker2.jpg",
+			"titlu":"Sneaker 2",
+			"descriere":"Red Nike x Off-White AF1",
+			"timp":"13:00-16:00"
 		},
 		{
-			"fisier":"gogosi.png",
-			"descriere":"Gogoși glazurate"
+			"cale_imagine":"sneaker3.jpg",
+			"titlu":"Sneaker 3",
+			"descriere":"Red AF1",
+			"timp":"13:00-16:00"
 		},
 		{
-			"fisier":"tort-scortisoara.png",
-			"descriere":"Tort cu scorțisoară"
+			"cale_imagine":"sneaker4.jpg",
+			"titlu":"Sneaker 4",
+			"descriere":"Red Converse",
+			"timp":"13:00-16:00"
 		},
 		{
-			"fisier":"prajitura-ciocolata.png",
-			"descriere":"Prăjitură cu ciocolată"
+			"cale_imagine":"sneaker5.jpg",
+			"titlu":"Sneaker 5",
+			"descriere":"White/Orange Nike Air",
+			"timp":"13:00-16:00"
 		},
 		{
-			"fisier":"tarta-afine.png",
-			"descriere":"Tartă cu afine"
+			"cale_imagine":"sneaker6.jpg",
+			"titlu":"Sneaker 6",
+			"descriere":"Blue AF1",
+			"timp":"13:00-16:00"
 		},
 		{
-			"fisier":"tort-trandafiri.png",
-			"descriere":"Tort special"
+			"cale_imagine":"sneaker7.jpg",
+			"titlu":"Sneaker 7",
+			"descriere":"White/Black/Red AFI",
+			"timp":"13:00-16:00"
+		},
+		{
+			"cale_imagine":"sneaker8.jpg",
+			"titlu":"Sneaker 8",
+			"descriere":"White Nike N. 354",
+			"timp":"13:00-16:00"
+		},
+		{
+			"cale_imagine":"sneaker9.jpg",
+			"titlu":"Sneaker 9",
+			"descriere":"Pink/Purple Nike Air",
+			"timp":"13:00-16:00"
+		},
+		{
+			"cale_imagine":"sneaker10.jpg",
+			"titlu":"Sneaker 10",
+			"descriere":"Green Nike Superrep",
+			"timp":"13:00-16:00"
+		},
+		{
+			"cale_imagine":"sneaker11.jpg",
+			"titlu":"Sneaker 11",
+			"descriere":"Black Nike Basketball",
+			"timp":"13:00-16:00"
 		}
 	]
 }

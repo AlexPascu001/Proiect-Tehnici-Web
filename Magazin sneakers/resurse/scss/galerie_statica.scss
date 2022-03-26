@@ -1,0 +1,50 @@
+$row : 1;
+$col : 1;
+
+@for $i from 1 to 11 {
+  @if $i == 6 {
+    $col : $col + 2;
+    #galerie_statica figure:nth-child(#{$i}) {
+      grid-area: #{$row}/#{$col}/#{($row+1)}/#{($col+1)};
+    }
+    $col : $col + 1;
+    @if $col > 4 {
+      $col : $col - 4;
+      $row : $row + 1;
+    }
+  }
+  @else {
+    #galerie_statica figure:nth-child(#{$i}) {
+      grid-area: #{$row}/#{$col}/#{($row+1)}/#{($col+1)};
+    }
+    $col : $col + 1;
+    @if $col > 4 {
+      $col : $col - 4;
+      $row : $row + 1;
+    }
+  }
+}
+
+$row : 1;
+$col : 1;
+
+@for $i from 1 to 11 {
+  #galerie_statica figure:nth-child(#{$i}) {
+    grid-area: #{$row}/#{$col}/#{($row+1)}/#{($col+1)};
+  }
+  $col : $col + 1;
+  @if $col > 2 {
+    $col : $col - 2;
+    $row : $row + 1;
+  }
+}
+
+$row : 1;
+$col : 1;
+
+@for $i from 1 to 11 {
+  #galerie_statica figure:nth-child(#{$i}) {
+    grid-area: #{$row}/#{$col}/#{($row+1)}/#{($col+1)};
+  }
+  $row : $row + 1;
+}
