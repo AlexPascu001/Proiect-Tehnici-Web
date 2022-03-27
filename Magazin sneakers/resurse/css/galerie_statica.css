@@ -1,6 +1,13 @@
 #galerie_statica {
-    counter-reset: nr_imag;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /*grid-gap: 0;*/
+}
+#galerie_statica img{
     width: 100%;
+}
+#galerie_statica {
+    counter-reset: nr_imag;
 }
 
 #galerie_statica figcaption::before {
@@ -82,6 +89,12 @@
 
 @media screen and (max-width:900px){
 
+    #galerie_statica {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /*grid-gap: 0;*/
+    }
+
     #galerie_statica figure:nth-child(1) {
         grid-area: 1/1/2/2;
     }
@@ -127,6 +140,12 @@
 }
 
 @media screen and (max-width: 500px){
+
+    #galerie_statica {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        /*grid-gap: 0;*/
+    }
 
     #galerie_statica figure:nth-child(1) {
         grid-area: 1/1/2/2;

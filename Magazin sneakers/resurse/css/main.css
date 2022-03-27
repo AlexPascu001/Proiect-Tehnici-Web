@@ -119,17 +119,7 @@ li>a {
         display: none;
     }
 }
-#galerie_statica {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /*grid-gap: 0;*/
-}
-#galerie_statica img{
-    width: 100%;
-}
-#galerie_statica figure:nth-child(7){
-    grid-area: 3/2/4/3;
-}
+
 #cont_linkuri a {
     padding: 0.25em;
     display: flex;
