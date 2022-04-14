@@ -9,7 +9,14 @@ const crypto = require("crypto");
 const session= require("express-session");
 
 
-var client = new Client({database:"bd_sneakerscape", user:"alex", password:"alex", host:"localhost", port:5432});
+//var client = new Client({database:"bd_sneakerscape", user:"alex", password:"alex", host:"localhost", port:5432});
+var client = new Client({database:"d1vs6t7g7gj8qg", user:"epassxlkuyepqn",
+    password:"44aac68327c1cdfe2df3af3c8404dcd3a741cffe78ff62a578f1fc0b1ca2e547",
+    host:"ec2-34-197-84-74.compute-1.amazonaws.com", port:5432,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
 client.connect();
 
 
