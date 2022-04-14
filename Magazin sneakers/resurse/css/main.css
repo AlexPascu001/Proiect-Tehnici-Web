@@ -12,9 +12,19 @@ body {
     --navy: navy;
     --alb: white;
 }
+
+body.dark {
+    --roz: green;
+    --mov: fuchsia;
+    --albastru-inchis: darkred;
+    --albastru-deschis: black;
+    --bleu: grey;
+    --turcoaz: #2ED8E8;
+    --navy: navy;
+    --alb: white;
+}
 body {
     background: var(--bleu);
-    /*background: var(--albastru-deschis);*/
     color: var(--alb) ;
 }
 main {
@@ -94,6 +104,10 @@ li>a {
     box-shadow:0 0 7px 2px inset navy;
     overflow:visible;
 }
+iframe {
+    width: 40%;
+}
+
 #link-top:hover {
     opacity:1;
 }

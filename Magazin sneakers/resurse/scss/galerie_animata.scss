@@ -1,0 +1,17 @@
+$nrimag : 7;
+@for $i from 0 to 7 {
+  #galerie_animata figure:nth-of-type(#{$nrimag - $i}) {
+      animation-delay: $i * 3s;
+  }
+}
+
+#galerie_animata figure {
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation-name: galerie_animata;
+}
+
+@keyframes galerie_animata {
+  //clip-path: circle(50% at 50% 50%);
+}

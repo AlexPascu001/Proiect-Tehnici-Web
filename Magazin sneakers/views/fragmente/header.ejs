@@ -1,3 +1,10 @@
+<script>
+    var tema = localStorage.getItem("tema");
+    if (tema)
+        document.body.classList.add("dark");
+    else
+        document.body.classList.remove("dark");
+</script>
 <header>
     <h1><span class="fa-brands fa-sitrox"></span> Sneakerscape</h1>
 </header>
@@ -22,6 +29,7 @@
         </li>
         <li><a href="#"><div class="optiune">Contact</div></a></li>
         <li><a href="#"><div class="optiune">Retur</div></a></li>
-        <li><a href="../../pagina_temp.html"><div>Sneakerscape Club</div></a></li>
+        <li><a href="/pagina_temp"><div>Sneakerscape Club</div></a></li>
+        <li><a href="/inregistrare"><div>Inregistrare</div></a></li>
     </ul>
 </nav>
