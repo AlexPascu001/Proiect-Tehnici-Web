@@ -16,17 +16,17 @@
         let ora1 = h1 * 60 + m1;
         let ora2 = h2 * 60 + m2;
         let ora = d.getHours() * 60 + d.getMinutes();
-        if (ora1 < ora && ora < ora2) {
-        %>
-            <figure>
-                <picture>
-                    <source srcset="<%- imagine.mic%>" media="(max-width:800px)"/>
-                    <source srcset="<%- imagine.mediu%>" media="(max-width:1200px)"/>
-                    <img src="<%- imagine.mare %>" alt="<% imagine.titlu%>">
-                </picture>
-                <figcaption> <%- imagine.descriere %></figcaption>
-            </figure>
-        <%
-        }
+    if (ora1 < ora && ora < ora2) {
+    %>
+        <figure>
+            <picture>
+                <source srcset="<%- imagine.mic%>" media="(max-width:800px)"/>
+                <source srcset="<%- imagine.mediu%>" media="(max-width:1200px)"/>
+                <img src="<%- imagine.mare %>" alt="<% imagine.titlu%>">
+            </picture>
+            <figcaption> <%- imagine.descriere %></figcaption>
+        </figure>
+    <%
+    }
     } %>
 </div>

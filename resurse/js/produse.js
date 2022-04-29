@@ -8,40 +8,43 @@ window.addEventListener("load",  function () {
         var valNume = document.getElementById("inp-nume").value.toLowerCase();
 
         var butoaneRadio = document.getElementsByName("gr_rad");
+        let valMarime;
         for (let rad of butoaneRadio) {
             if (rad.checked) {
-                var varCalorii = rad.value;
+                valMarime = rad.value;
                 break;
             }
         }
-        if (valCalorii != "toate") {
-            var minCalorii, maxCalorii;
-            [minCalorii, maxCalorii] = valCalorii.split(":");
-            minCalorii = parseInt(minCalorii);
-            maxCalorii = parseInt(maxCalorii);
+        if (valMarime != "toate") {
+            var minMarime, maxMarime;
+            [minMarime, maxMarime] = valMarime.split(":");
+            minMarime = parseInt(minMarime);
+            maxMarime = parseInt(maxMarime);
         }
         else {
-            minCalorii = 0;
-            maxCalorii = 10000000000;
+            minMarime = 0;
+            maxMarime = 10000000000;
         }
 
         var valPret = document.getElementById("inp-pret").value;
 
-        // var valCategorie =
+        var valCategorie = document.getElementById("inp-categorie").value;
 
         var articole = document.getElementsByClassName("produs");
         for (let art of articole) {
             art.style.display = "none";
-            let numeArt = art.getElementsByClassName("val-name")[0].innerHTML.toLowerCase();
+            let numeArt = art.getElementsByClassName("val-nume")[0].innerHTML.toLowerCase();
             let cond1 = (numeArt.startsWith(valNume));
 
-            let caloriiArt = parseInt(art.getElementsByClassName("val-calorii")[0].innerHTML);
-            let cond2 = (minCalorii <= caloriiArt && caloriiArt < maxCalorii);
-
+            let MarimeArt = parseInt(art.getElementsByClassName("val-marime")[0].innerHTML);
+            let cond2 = (minMarime <= MarimeArt && MarimeArt < maxMarime);
             let pretArt = parseInt(art.getElementsByClassName("val-pret")[0].innerHTML);
             let cond3 = (valPret <= pretArt);
 
-            let conditieFinala = cond1 && cond2 && cond3;
+            let categorieArt=art.getElementsByClassName("val-categorie")[0].innerHTML
+            let cond4 = (valCategorie=="toate") || (categorieArt == valCategorie);
+
+            let conditieFinala = cond1 && cond2 && cond3 && cond4;
             if (conditieFinala) {
                 art.style.display = "block";
             }
@@ -87,8 +90,7 @@ window.addEventListener("load",  function () {
     }
 
     window.onkeydown = function (event) {
-        console.log(event);
-        if (event.key == 'c' && e.altKey) {
+        if (event.key == 'c' && event.altKey) {
             var p_vechi = document.getElementById("suma");
             if (!p_vechi) {
                 suma = 0;
@@ -107,7 +109,7 @@ window.addEventListener("load",  function () {
                     if (p_vechi)
                         p_vechi.remove();
                 }, 2000);
-            }
+             }
         }
     }
 })

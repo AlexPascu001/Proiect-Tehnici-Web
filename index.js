@@ -7,16 +7,18 @@ const sass = require("sass");
 const formidable = require("formidable");
 const crypto = require("crypto");
 const session= require("express-session");
+const {exec} = require("child_process");
+const path = require("path");
 
 
-//var client = new Client({database:"bd_sneakerscape", user:"alex", password:"alex", host:"localhost", port:5432});
-var client = new Client({database:"d1vs6t7g7gj8qg", user:"epassxlkuyepqn",
-    password:"44aac68327c1cdfe2df3af3c8404dcd3a741cffe78ff62a578f1fc0b1ca2e547",
-    host:"ec2-34-197-84-74.compute-1.amazonaws.com", port:5432,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
+var client = new Client({database:"bd_sneakerscape", user:"alex", password:"alex", host:"localhost", port:5432});
+// var client = new Client({database:"d1vs6t7g7gj8qg", user:"epassxlkuyepqn",
+//     password:"44aac68327c1cdfe2df3af3c8404dcd3a741cffe78ff62a578f1fc0b1ca2e547",
+//     host:"ec2-34-197-84-74.compute-1.amazonaws.com", port:5432,
+//     ssl: {
+//         rejectUnauthorized: false
+//     }
+// });
 client.connect();
 
 
@@ -38,7 +40,7 @@ console.log("Director proiect:", __dirname);
 app.get(["/", "/index", "/home"], function (req, res){
     client.query("select * from test", function (err, rezQuery) {
         console.log(rezQuery);
-        res.render("pagini/index", {ip: req.ip, imagini:obImagini.imagini, produse:rezQuery.rows})
+        res.render("pagini/index", {ip: req.ip, imagini:obImagini.imagini, produse:rezQuery.rows, imagini_a:UltimeleImagini()})
     })
 })
 
@@ -59,26 +61,48 @@ app.get("/pagina_temp*", function (req, res) {
     res.render("pagini/pagina_temp");
 })
 
-app.get("*/galerie-animata.css", function (req, res) {
-    var buf=fs.readFileSync(__dirname+"/resurse/scss/galerie-animata.scss").toString("utf8");
-    var culori=["navy", "black", "purple", "green"];
-    var indiceAleator=Math.floor(Math.random()*culori.length);
-    var culoareAleatoare=culori[indiceAleator];
-    rezScss=ejs.render(sirScss, {culoare:culoareAleatoare});
-    var caleScss=__dirname+"/temp/galerie_animata.scss"
-    fs.writeFileSync(caleScss, rezScss);
-    try {
-        rezCompilare = sass.compile(caleScss, {sourceMap: true});
-        var caleCss = __dirname + "/temp/galerie_animata.css";
-        fs.writeFileSync(caleCss, rezCompilare.css);
-        res.setHeader("Content-Type", "text-css");
-        res.sendFile(caleCss);
-    }
-    catch (err) {
-        console.log(err);
-        res.send("Eroare");
-    }
-})
+app.get("*/galerie_animata.css",function(req, res){
+
+    console.log("galerie animata apelata");
+    res.setHeader("Content-Type","text/css");
+
+    exec("sass ./resurse/sass/galerie_animata.scss ./temp/galerie_animata.css", (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message}`);
+            res.end();
+            return;
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            res.end();
+            return;
+        }
+        //console.log(`stdout: ${stdout}`);
+        res.sendFile(path.join(__dirname,"temp/galerie_animata.css"));
+    });
+
+});
+
+// app.get("*/galerie-animata.css", function (req, res) {
+//     var buf=fs.readFileSync(__dirname+"/resurse/scss/galerie-animata.scss").toString("utf8");
+//     var culori=["navy", "black", "purple", "green"];
+//     var indiceAleator=Math.floor(Math.random()*culori.length);
+//     var culoareAleatoare=culori[indiceAleator];
+//     rezScss=ejs.render(sirScss, {culoare:culoareAleatoare});
+//     var caleScss=__dirname+"/temp/galerie_animata.scss"
+//     fs.writeFileSync(caleScss, rezScss);
+//     try {
+//         rezCompilare = sass.compile(caleScss, {sourceMap: true});
+//         var caleCss = __dirname + "/temp/galerie_animata.css";
+//         fs.writeFileSync(caleCss, rezCompilare.css);
+//         res.setHeader("Content-Type", "text-css");
+//         res.sendFile(caleCss);
+//     }
+//     catch (err) {
+//         console.log(err);
+//         res.send("Eroare");
+//     }
+// })
 
 parolaServer = "tehniciweb";
 app.post("/inreg", function (req, res) {
@@ -89,14 +113,29 @@ app.post("/inreg", function (req, res) {
     })
 })
 
-app.get("/produse", function (req, res) {
-    client.query("select * from unnest(enum_range(null::categ_prajitura))", function(err, rezCateg){
-        console.log(rezCateg);
+// app.get("/produse", function (req, res) {
+//     client.query("select * from adidasi", function (err, rezQuery) {
+//         res.render("pagini/produse", {produse: rezQuery.rows})
+//     });
+// });
 
-        client.query("select * from cars", function (err, rezQuery) {
-            res.render("pagini/produse", {produse: rezQuery})
-        })
-    })
+app.get("/produse", function(req, res){
+    console.log(req.query);
+    client.query("select * from unnest(enum_range(null::categ_brand))", function(err, rezCateg){
+        var cond_where=req.query.tip ? ` tip_produs='${req.query.tip}'` : " 1=1";
+
+        client.query("select * from adidasi where "+cond_where, function(err, rezQuery){
+            console.log(err);
+            console.log(rezQuery);
+            res.render("pagini/produse", {produse: rezQuery.rows , optiuni:rezCateg.rows});
+        });
+    });
+});
+
+app.get("/produs/:id", function (req, res) {
+    client.query(`select * from adidasi where id=${req.params.id}`, function (err, rezQuery) {
+        res.render("pagini/produs", {prod: rezQuery.rows[0]})
+    });
 });
 
 
@@ -120,7 +159,27 @@ app.get("/*", function (req, res) {
     });
     console.log("generala:", req.url);
     res.end();
-})
+});
+
+function UltimeleImagini(){
+
+    var textFisier=fs.readFileSync("resurse/json/galerie.json")
+    var jsi=JSON.parse(textFisier);
+
+    var caleGalerie=jsi.cale_galerie;
+    console.log(caleGalerie);
+    let galeria_animata=[]
+
+    for(let i=jsi.imagini.length-1; i>=0 && galeria_animata.length<14; --i)
+    {
+        var img = path.join(caleGalerie, jsi.imagini[i].cale_imagine);
+        galeria_animata.push({cale_imagine:img, titlu:jsi.imagini[i].titlu, descriere:jsi.imagini[i].descriere})
+
+    }
+
+    return galeria_animata;
+}
+
 
 function creeazaImagini(){
 

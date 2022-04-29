@@ -13,16 +13,15 @@
 
 <main>
     <label> Nume: <input type="text" id="inp-nume"></label>
-    <!--<label> Maxim calorii: <input type="number" id="inp-calorii" value="10000"></label>-->
-    <div> Calorii:<!-- trebuie sa aiba acelasi name ca sa formeze un grup -->
-        <p><label>Dietetic (calorii &lt; 350)
-                <input id="i_rad1"  name="gr_rad" value="0:350" type="radio"/>
+    <div id="inp-marime"> Marime:<!-- trebuie sa aiba acelasi name ca sa formeze un grup -->
+        <p><label>Pentru copii (marime &lt; 35)
+                <input id="i_rad1"  name="gr_rad" value="0:35" type="radio"/>
             </label></p>
-        <p><label>Mediu (350 &le; calorii &lt; 700)
-                <input id="i_rad2"  name="gr_rad" value="350:750" type="radio"/>
+        <p><label>Pentru femei (35 &le; marime &lt; 41)
+                <input id="i_rad2"  name="gr_rad" value="35:41" type="radio"/>
             </label>
-        <p><label>Ridicat caloric (700 &le; calorii)
-                <input id="i_rad3" name="gr_rad" value="700:1000000000" type="radio"/>
+        <p><label>Pentru barbati (41 &le; marime)
+                <input id="i_rad3" name="gr_rad" value="41:1000000000" type="radio"/>
             </label>
         <p><label>Toate
                 <input id="i_rad4" checked name="gr_rad" value="toate" type="radio"/>
@@ -30,7 +29,7 @@
     </div>
 
 
-    <label> Pret minim: <input type="range" id="inp-pret" value="0" min="0"  max="70"> <span id="infoRange">(0)</span></label>
+    <label> Pret minim: <input type="range" id="inp-pret" value="0" min="0"  max="1500"> <span id="infoRange">(0)</span></label>
     <label>Select simplu:
         <select id="inp-categorie">
             <option id="sel-toate" selected value="toate">toate</option>
@@ -47,21 +46,21 @@
 
     </p>
 
-    <p id="p-suma">Apăsați Alt+"c" pentru suma preturilor produselor afișate. </p>
+    <p id="p-suma">Apăsați Alt+"C" pentru suma preturilor produselor afișate. </p>
     <section id="produse">
         <h2>Produse</h2>
         <div class="grid-produse">
-            <% for( let prod of locals.produse) { %>
+            <% for(let prod of locals.produse) { %>
             <article class="produs" >
                 <h3 class="nume">Nume: <a href="/produs/<%-prod.id %>" ><span class="val-nume"><%- prod.nume%></span></a></h3>
                 <div class="info-prod">
                     <p class="pret">Pret: <span class="val-pret"><%- prod.pret%></span></p>
-                    <p class="calorii">Calorii: <span class="val-calorii"><%- prod.calorii%></span></p>
-                    <p class="gramaj">Gramaj: <span class="val-gramaj"><%- prod.gramaj%></span></p>
+                    <p class="marime">Marime: <span class="val-marime"><%- prod.marime%></span></p>
+                    <p class="culoare">Culoare principala: <span class="val-culoare"><%- prod.culoare_principala%></span></p>
                 </div>
-                <p class="categorie">Categorie:<span class="val-categorie"><%- prod.categorie%></span></p>
+                <p class="categorie">Categorie: <span class="val-categorie"><%- prod.categorie%></span></p>
                 <figure>
-                    <a href="/produs/<%-prod.id %>" ><img src="/resurse/imagini/produse/<%- prod.imagine %>" style="width:50%;height:auto;" alt="[imagine <%- prod.nume %>]" /></a>
+                    <a href="/produs/<%-prod.id %>" ><img src="/resurse/imagini/produse/<%- prod.imagine %>" alt="[imagine <%- prod.nume %>]" /></a>
                 </figure>
                 <label class="selecteaza-cos">
                     Selectează:<br/>

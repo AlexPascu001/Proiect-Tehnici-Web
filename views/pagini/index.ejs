@@ -4,6 +4,7 @@
 	<title>Sneakerscape</title>
 	<meta name="Keywords" content="adidasi, sneakers, incaltaminte, sneakers dama, sneakers barbati, reduceri incaltaminte, promotii incaltaminte, sneakers nike, sneakers adidas, sneakers puma">
 	<meta name="Description" content="Cel mai tare magazin de adidasi din Romania! Promotii zilnice si reduceri garantate!">
+	<link rel="stylesheet" href="/resurse/scss/galerie_animata.css" type="text/css" media="screen">
 	<%- include("../fragmente/head.ejs"); %>
 </head>
 <body>
@@ -13,8 +14,8 @@
 			<p><button id="btn_tema">Change theme</button></p>
 			<h2 id="shop_now">Shop now</h2>
 			<%- include("../fragmente/galerie.ejs"); %>
-		</section>
 
+		</section>
 		<section id="tabel">
 			<video width="320" height="240" controls="controls" poster="resurse/imagini/sneaker2.png" preload="auto">
 				<source src="/resurse/video/video.mov" type="video/mp4">
@@ -59,6 +60,16 @@
 					</tfoot>
 					<caption>Locații magazine Sneakerscape</caption>
 				</table>
+			</div>
+			<div id="galerie_animata" >
+				<% for (let img of locals.imagini_a){  %>
+					<figure>
+						<picture>
+							<img src="<%- img.cale_imagine %>" alt="<%- img.titlu %>" title="<%- img.descriere %>">
+						</picture>
+						<figcaption><%-img.descriere%></figcaption>
+					</figure>
+				<% } %>
 			</div>
 		</section>
 		<section id="calendar">

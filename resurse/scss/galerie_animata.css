@@ -1,3 +1,85 @@
+#galerie_animata {
+  width: 500px;
+  height: 750px;
+  border: 20px solid transparent;
+  border-image-source: url("/resurse/imagini/border_img.png");
+  border-image-repeat: stretch;
+  border-image-width: 20px;
+  border-image-slice: 75;
+  position: relative;
+  overflow: hidden;
+}
+
+#galerie_animata figcaption {
+  position: absolute;
+  bottom: 0;
+  background: black;
+  width: 100%;
+  text-align: center;
+}
+
+#galerie_animata figure {
+  position: relative;
+  width: 500px;
+  height: 750px;
+  margin: 0;
+}
+
+#galerie_animata figure {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  animation-name: animation_7;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-duration: 21s;
+  transform-origin: center center;
+}
+
+#galerie_animata:hover figure {
+  animation-play-state: paused;
+}
+
+@keyframes animation_7 {
+  0% {
+    z-index: 10;
+    opacity: 1;
+    clip-path: none;
+  }
+  4.2857142857% {
+    clip-path: circle(100%);
+  }
+  8.5714285714% {
+    opacity: 1;
+    transform: rotate(0deg);
+    clip-path: circle(40%);
+  }
+  14.2857142857% {
+    z-index: 10;
+    opacity: 0;
+    transform: rotate(360deg);
+    clip-path: circle(15%);
+  }
+  14.2867142857% {
+    z-index: -10;
+    clip-path: none;
+  }
+  85.7132857143% {
+    opacity: 0;
+    z-index: -10;
+    transform: rotate(0deg);
+  }
+  85.7142857143% {
+    opacity: 1;
+    z-index: 0;
+  }
+  100% {
+    z-index: 0;
+    clip-path: none;
+  }
+}
 #galerie_animata figure:nth-of-type(7) {
   animation-delay: 0s;
 }
@@ -26,13 +108,34 @@
   animation-delay: 18s;
 }
 
-#galerie_animata figure {
-  position: absolute;
-  left: 0;
-  top: 0;
-  animation-name: galerie_animata;
+#galerie_animata figure:nth-of-type(8) {
+  display: none;
 }
 
-@keyframes galerie_animata {}
+#galerie_animata figure:nth-of-type(9) {
+  display: none;
+}
+
+#galerie_animata figure:nth-of-type(10) {
+  display: none;
+}
+
+#galerie_animata figure:nth-of-type(11) {
+  display: none;
+}
+
+#galerie_animata figure:nth-of-type(12) {
+  display: none;
+}
+
+#galerie_animata figure:nth-of-type(13) {
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  #galerie_animata {
+    display: none;
+  }
+}
 
 /*# sourceMappingURL=galerie_animata.css.map */
