@@ -1,0 +1,32 @@
+<div id="galerie_statica">
+    <%
+    d=new Date()
+    for (let i = 0; i < locals.imagini.length && i < 10; i++) {
+        let imagine = locals.imagini[i];
+        let v = imagine.timp.split("-");
+        let a = v[0];
+        let b = v[1];
+        let h1, m1, h2, m2;
+        [h1, m1] = a.split(":");
+        [h2, m2] = b.split(":");
+        h1 = parseInt(h1);
+        m1 = parseInt(m1);
+        h2 = parseInt(h2);
+        m2 = parseInt(m2);
+        let ora1 = h1 * 60 + m1;
+        let ora2 = h2 * 60 + m2;
+        let ora = d.getHours() * 60 + d.getMinutes();
+        if (ora1 < ora && ora < ora2) {
+        %>
+            <figure>
+                <picture>
+                    <source srcset="<%- imagine.mic%>" media="(max-width:800px)"/>
+                    <source srcset="<%- imagine.mediu%>" media="(max-width:1200px)"/>
+                    <img src="<%- imagine.mare %>" alt="<% imagine.titlu%>">
+                </picture>
+                <figcaption> <%- imagine.descriere %></figcaption>
+            </figure>
+        <%
+        }
+    } %>
+</div>

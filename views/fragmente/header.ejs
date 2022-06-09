@@ -30,8 +30,20 @@
         </li>
         <li><a href="#"><div class="optiune">Contact</div></a></li>
         <li><a href="#"><div class="optiune">Retur</div></a></li>
-        <li><a href="/pagina_temp"><div>Sneakerscape Club</div></a></li>
-        <li><a href="/produse"><div>Produse</div></a> </li>
-        <li><a href="/inregistrare"><div>Inregistrare</div></a></li>
+        <li><a href="/produse"><div class="optiune">Produse</div></a> </li>
+        <li><a href="/inregistrare"><div class="optiune">Sneakerscape Club</div></a></li>
+        <li><a href="/cos-virtual"><div class="optiune">Cos</div></a></li>
+        <% if (locals.utilizator && locals.utilizator.rol == "admin") { %>
+            <li><a href="/useri">Useri</a></li>
+        <% } %>
+        <% if (locals.utilizator) { %>
+            <% console.log(locals.utilizator)%>
+            <li><div><%- locals.utilizator.username %></div>
+                <ul>
+                    <li><a href="/profil">Profil</a> </li>
+                    <li><a href="/logout">Log out</a> </li>
+                </ul>
+            </li>
+        <% } %>
     </ul>
 </nav>

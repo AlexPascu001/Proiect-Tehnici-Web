@@ -1,0 +1,90 @@
+@media print {
+    #absolut{
+        position: absolute;
+        display: inline-block;
+        justify-content: center;
+        bottom:5%;
+        width:100px;
+        height:10px;
+        align-content: center;
+        overflow: visible;
+    }
+    #absolut::after{
+        content:"Acesta este un proiect școlar.";
+        position: relative;
+        font-size:32px;
+        color: red;
+        text-align: center;
+        border: 4px inset black;
+        width:147mm;
+        left: 100%;
+        height:35px;
+        display: inline-block;
+    }
+    html, body {
+        width: 210mm;
+        overflow:visible !important;
+        text-decoration: none;
+    }
+    nav {
+        position: unset;
+        display: flex;
+        page-break-after: always;
+        justify-content: center;
+    }
+    nav ul li ul {
+        display: none;
+        position:relative;
+        top:15px;
+        left:0;
+    }
+    nav ul.meniu {
+        all: unset;
+    }
+    #watermark
+    {
+        display: block;
+        position: fixed;/*apare pe toate paginile*/
+        bottom:0;
+        color:rgba(0,0,0,0.4);
+        right:0;
+    }
+    #watermark::after{
+
+        opacity:0.4;
+        padding:5px;
+        width: 4cm;
+        height: 1cm;
+        display: block;
+        background: white;
+        border:3px solid black;
+        border-radius: 10%;
+        color: red;
+        content:"Pascu Ionut Alexandru";
+    }
+    footer {
+        page-break-before: always;
+    }
+    #end{
+        page-break-before: always;
+    }
+    img, video, iframe {
+        display: none;
+    }
+}
+
+@page {
+    size: A4 portrait;
+    margin-bottom:2cm;
+    margin-top:2cm;
+    counter-increment: page;
+
+}
+@page:left{
+    margin-left:3cm;
+    margin-right:1cm;
+}
+@page:right{
+    margin-right:3cm;
+    margin-left:1cm;
+}

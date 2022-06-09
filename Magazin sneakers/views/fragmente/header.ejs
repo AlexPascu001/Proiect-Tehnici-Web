@@ -1,0 +1,35 @@
+<script>
+    var tema = localStorage.getItem("tema");
+    if (tema)
+        document.body.classList.add("dark");
+    else
+        document.body.classList.remove("dark");
+</script>
+<header>
+    <h1><span class="fa-brands fa-sitrox"></span> Sneakerscape</h1>
+</header>
+<nav>
+    <label id="hamburger" for="ch-menu">
+        <img src="/resurse/imagini/Hamburger_icon_alb.png" alt="meniu">
+    </label>
+    <input id="ch-menu" type="checkbox">
+    <ul class="meniu">
+        <li>
+            <div>
+                <span id="text">Acasa</span>
+                <span class="fa-solid fa-house" id="casuta"></span>
+            </div>
+            <ul>
+                <li><a href="/index#incaltaminte_barbati"><div>Incaltaminte barbati</div></a></li>
+                <li><a href="/index#incaltaminte_dama"><div>Incaltaminte dama</div></a></li>
+                <li><a href="/index#incaltaminte_unisex"><div>Incaltaminte unisex</div></a></li>
+                <li><a href="/index#promotie_primavara"><div>Fresh Spring Promo</div></a></li>
+                <li><a href="/index#reduceri"><div>Reduceri</div></a></li>
+            </ul>
+        </li>
+        <li><a href="#"><div class="optiune">Contact</div></a></li>
+        <li><a href="#"><div class="optiune">Retur</div></a></li>
+        <li><a href="/pagina_temp"><div>Sneakerscape Club</div></a></li>
+        <li><a href="/inregistrare"><div>Inregistrare</div></a></li>
+    </ul>
+</nav>

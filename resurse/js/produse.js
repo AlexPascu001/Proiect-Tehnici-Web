@@ -2,7 +2,19 @@ window.addEventListener("load",  function () {
     document.getElementById("inp-pret").onclick = function () {
         document.getElementById("infoRange").innerHTML = "(" + this.value + ")";
     }
-
+    iduriProduse = localStorage.getItem("cos_virtual");
+    if (iduriProduse) {
+        iduriProduse.split(",");
+    }
+    else {
+        iduriProduse = [];
+    }
+    for (let id_p of iduriProduse) {
+        var ch = document.querySelector(`[value='${id_p}'].select-cos`);
+        if (ch) {
+            ch.checked = true;
+        }
+    }
     document.getElementById("filtrare").onclick = function () {
 
         var valNume = document.getElementById("inp-nume").value.toLowerCase();
@@ -112,4 +124,28 @@ window.addEventListener("load",  function () {
              }
         }
     }
+    var checkboxuri = document.getElementsByClassName("select-cos");
+    for (let ch of checkboxuri) {
+        ch.onchange = function () {
+            iduriProduse = localStorage.getItem("cos_virtual");
+            if (iduriProduse) {
+                iduriProduse = iduriProduse.split(",");
+            }
+            else {
+                iduriProduse = [];
+            }
+            if (this.checked) {
+                iduriProduse.push(this.value);
+                localStorage.setItem("cos_virtual", iduriProduse.join(","));
+            }
+            else {
+                let idx = iduriProduse.indexOf(this.value);
+                if (idx != -1)
+                    iduriProduse.splice(idx, 1);
+                localStorage.setItem("cos_virtual", iduriProduse.join(","));
+            }
+        }
+    }
+
 })
+

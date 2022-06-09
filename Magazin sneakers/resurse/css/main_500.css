@@ -1,0 +1,15 @@
+html {
+    font-size: 12px;
+}
+main {
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    display: block;
+}
+@media {
+    #container_tabel {
+        overflow-x: scroll;
+    }
+}
